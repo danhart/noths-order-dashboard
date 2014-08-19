@@ -1,0 +1,20 @@
+.main {
+  overflow: hidden;
+}
+
+#order_display {
+  width: 5000000px;
+  overflow: hidden;
+  transition: transform 1s cubic-bezier(.1, .1, .35, .8);
+  height: 400px;
+}
+
+.order {
+  float: left;
+}
+
+.order_details {
+  width: 300px;
+  margin: auto;
+  background: blue;
+}
