@@ -1,20 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
 .main {
   overflow: hidden;
 }
 
 #order_display {
-  width: 5000000px;
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  transition: transform 1s cubic-bezier(.1, .1, .35, .8);
-  height: 400px;
+  height: 350px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .order {
-  float: left;
+  position: absolute;
+  height: 350px;
+  left: 0;
+  top: 0;
+  transition: transform 1s cubic-bezier(.1, .1, .35, .8);
+  padding: 20px;
 }
 
 .order_details {
   width: 300px;
-  margin: auto;
-  background: blue;
+  height: 310px;
+  border: 1px solid black;
+}
+
+.logo {
+  width: 270px;
+  margin: 16px auto;
+  display: block;
+  display: none;
 }

@@ -10,6 +10,36 @@ define(["order-collection", "order-display-view", "ttv", "uk-ttv-view", "socket.
         orderCollection.push(ordersData);
     });
 
+    fakeData = function() {
+        orderCollection.push([
+           {
+              "geo":{
+                 "place":"Loughborough",
+                 "county":"",
+                 "country":"United Kingdom"
+              },
+              "product":{
+                 "imageURL":{
+                    "micro":"/system/product_images/images/001/318/256/micro_personalised-classic-book-lever-box-files.jpg",
+                    "mini":"/system/product_images/images/001/318/256/mini_personalised-classic-book-lever-box-files.jpg"
+                 },
+                 "title":"Old Book Style Lever Arch Or Box File Storage",
+                 "partnerName":"KleverCase",
+                 "url":"/klevercase/product/personalised-classic-book-lever-box-files",
+                 "geo":{
+                    "place":"Fawley",
+                    "county":"Hampshire",
+                    "country":"United Kingdom"
+                 }
+              },
+              "deliveryAddress":"Loughborough, United Kingdom",
+              "senderAddress":"Fawley, Hampshire, United Kingdom",
+              "date":"2014-08-19T22:08:39.222Z",
+              "origin":"http://www.notonthehighstreet.com"
+           }
+        ]);
+    };
+
     orderCollection.on('add', function(order) {
         var total = order.get('total');
 
