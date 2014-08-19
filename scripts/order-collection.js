@@ -6,12 +6,7 @@ define(["backbone", "order"], function(Backbone, Order) {
             var collection = this;
 
             ordersData.forEach(function(orderData) {
-                collection.add({
-                    product: {
-                        title: orderData.product.title,
-                        imageURL: orderData.product.imageURL.mini
-                    }
-                });
+                collection.add(orderData);
             });
         }
     });
