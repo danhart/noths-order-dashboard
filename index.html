@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order Dashboard</title>
+
+    <meta charset="utf-8">
+
+    <link href="styles/reset.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="styles/main.css" media="screen" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <section class="main">
+      <article id="order_display">
+      </article>
+    </section>
+
+    <script type="text/template" id="order_template">
+      <article class="order">
+        <img class="product_image" src="http://www.notonthehighstreet.com{{{product.imageURL}}}" />
+        <p class="product_title">{{product.title}}</p>
+      </article>
+    </script>
+
+    <script data-main="scripts/main" src="scripts/require.js"></script>
+  </body>
+</html>
