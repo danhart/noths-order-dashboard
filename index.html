@@ -18,21 +18,65 @@
       <article id="order_display">
       </article>
 
-      <article id="uk_ttv">
-        <p class="GBP"></p>
-        <p class="AUD"></p>
-        <p class="EUR"></p>
-        <p class="USD"></p>
-      </article>
+      <section class="today_modules">
+        <article id="uk_today" class="today">
+          <h1 class="today_title">
+            UK TODAY
+
+            <span id="uk_ttv" class="ttv">
+              <span class="GBP"></span>
+              <span class="AUD"></span>
+              <span class="EUR"></span>
+              <span class="USD"></span>
+            </span>
+          </h1>
+
+          <div class="today_details">
+            <p class="order_count"></p>
+
+            <article class="last_order">
+            </article>
+          </div>
+        </article>
+
+        <article id="de_today" class="today">
+          <h1 class="today_title">
+            DE TODAY
+
+            <span id="de_ttv" class="ttv">
+              <span class="GBP"></span>
+              <span class="AUD"></span>
+              <span class="EUR"></span>
+              <span class="USD"></span>
+            </span>
+          </h1>
+
+          <div class="today_details">
+            <p class="order_count"></p>
+
+            <article class="last_order">
+            </article>
+          </div>
+        </article>
+      </section>
     </section>
 
     <script type="text/template" id="order_template">
       <article class="order">
         <div class="order_details">
-          <img class="product_image" src="http://www.notonthehighstreet.com{{{product.imageURL.mini}}}" />
+          <img class="product_image" src="{{{product.imageURL.original}}}" />
           <p class="product_title">{{product.title}}</p>
+          <p class="partner_name"><span class="label">by</span> {{product.partnerName}}</p>
+          <p class="total_price">{{total.currency_symbol}}{{total.amount}}</p>
         </div>
       </article>
+    </script>
+
+    <script type="text/template" id="product_template">
+      <img class="product_image" src="{{{product.imageURL.mini}}}" />
+      <p class="product_title">{{product.title}}</p>
+      <p class="partner_name">{{product.partnerName}}</p>
+      <p class="total_price">{{total.currency_symbol}}{{total.amount}}</p>
     </script>
 
     <script data-main="scripts/main" src="scripts/require.js"></script>

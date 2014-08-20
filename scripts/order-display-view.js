@@ -31,11 +31,17 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
 
     var OrderDisplayView = Backbone.View.extend({
         initialize: function() {
+            var view = this;
+
+            this.windowWidth = window.innerWidth;
             this.$el = $(this.el);
-            this.listenTo( this.collection, 'add', _.rateLimit(this.render, 1000) );
+            this.listenTo( this.collection, 'add', this.render );
         },
 
-        render: function(order) {
+        render: _.rateLimit(function(order) {
+            var locals = $.extend(true, {}, order.attributes);
+            locals.total.amount = order.get('total').amount.toFixed(2);
+
             var $oldOrders = this.$el.find('.order');
             $oldOrders.addClass('old').removeClass('current');
 
@@ -46,17 +52,18 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
                 $(this).css('transform', 'translate3d(' + newOffset + 'px,0,0) scale(.7,.7)');
             });
 
-            var $order = $(mustache.render(template, order.attributes));
+            var $order = $(mustache.render(template, locals));
+
             $order.addClass('current');
-            $order.css('transform', 'translate3d(' + window.innerWidth + 'px,0,0)');
+            $order.css('transform', 'translate3d(' + this.windowWidth + 'px,0,0)');
             this.$el.append($order);
 
-            var centerOffset = window.innerWidth / 2 - $order.width() / 2;
+            var centerOffset = this.windowWidth / 2 - $order.width() / 2;
 
             setTimeout(function() {
                 $order.css('transform', 'translate3d(' + centerOffset + 'px,0,0)');
             }, 20);
-        },
+        }, 1020),
 
         setXPosition: function() {
             this.$el.css('transform', 'translate3d(' + this.xPosition + 'px,0,0)');

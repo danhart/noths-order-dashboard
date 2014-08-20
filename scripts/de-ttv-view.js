@@ -1,5 +1,5 @@
 define(['backbone', 'jquery'], function(Backbone, $) {
-    var ukTTVView = Backbone.View.extend({
+    var deTTVView = Backbone.View.extend({
         initialize: function() {
             this.$el = $(this.el);
             this.listenTo( this.model, 'change', this.render );
@@ -14,5 +14,5 @@ define(['backbone', 'jquery'], function(Backbone, $) {
         }
     });
 
-    return ukTTVView;
+    return deTTVView;
 });
