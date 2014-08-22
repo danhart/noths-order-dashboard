@@ -18,7 +18,6 @@ define(['backbone', 'jquery'], function(Backbone, $) {
         },
 
         renderLastOrder: function() {
-            console.log(this.model.get('lastOrder').attributes);
         }
     });
 
