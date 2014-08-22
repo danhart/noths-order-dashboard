@@ -34,15 +34,18 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
             this.cacheOrderWidth();
             this.windowWidth = window.innerWidth;
             this.$el = $(this.el);
+            this.renderTtv();
             this.listenTo( this.collection, 'add', this.render );
         },
 
         cacheOrderWidth: function() {
             var $order = $('<div/>', { 'class': 'order' }).hide().appendTo('body');
             this.orderWidth = parseInt($order.css('width'));
+            console.log(this.orderWidth);
         },
 
         render: _.rateLimit(function(order) {
+            this.renderTtv();
             this.updateOldOlders();
 
             var locals = $.extend(true, {}, order.attributes);
@@ -54,12 +57,13 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
             $order.css('transform', 'translate3d(' + this.windowWidth + 'px,0,0)');
             this.$el.append($order);
 
-            var centerOffset = this.windowWidth / 2 - this.orderWidth / 2;
-            $order.data('currentOffset', centerOffset);
+            // var centerOffset = this.windowWidth / 2 - this.orderWidth / 2;
+            var newOffset = this.windowWidth - this.orderWidth - 40;
+            $order.data('currentOffset', newOffset);
 
             // Give the browser some time to insert the new order
             setTimeout(function() {
-                $order.css('transform', 'translate3d(' + centerOffset + 'px,0,0)');
+                $order.css('transform', 'translate3d(' + newOffset + 'px,0,0)');
             }, 100);
         }, 1100),
 
@@ -79,6 +83,14 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
                 $oldOrder.data('currentOffset', newOffset);
                 $oldOrder.css('transform', 'translate3d(' + newOffset + 'px,0,0) scale(.7,.7)');
             });
+        },
+
+        renderTtv: function() {
+            var totalTtv = this.collection.totalTtv();
+            this.$el.find(".AUD").text("$" + totalTtv.AUD.toFixed(2));
+            this.$el.find(".GBP").text("£" + totalTtv.GBP.toFixed(2));
+            this.$el.find(".EUR").text("€" + totalTtv.EUR.toFixed(2));
+            this.$el.find(".USD").text("$" + totalTtv.USD.toFixed(2));
         }
     });
 

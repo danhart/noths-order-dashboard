@@ -19,10 +19,10 @@ body {
   font-family: "NOTHS 3 Regular";
   font-style: normal;
   color: #555;
-  background-color: #f9f9f9;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+  height: 100%;
 }
 
 * {
@@ -31,24 +31,49 @@ body {
 
 .main {
   overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-#order_display {
+.order_display {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 533px;
+  height: 50%;
   border-bottom: 2px solid #E7E6DD;
-  background-color: #f4f4f4;
+  background-size: 100% 100%;
+}
+
+.order_display_uk {
+  background-image: url('../images/ukflag.png');
+}
+
+.order_display_de {
+  background-image: url('../images/deflag.png');
+}
+
+.order_display_uk .ttv .USD,
+.order_display_uk .ttv .AUD,
+.order_display_uk .ttv .EUR {
+  display: none;
+}
+
+.order_display_de .ttv .USD,
+.order_display_de .ttv .AUD,
+.order_display_de .ttv .GBP {
+  display: none;
 }
 
 .order {
   position: absolute;
-  width: 350px;
+  width: 20%;
   left: 0;
   top: 0;
-  transition: transform 1s cubic-bezier(.1, .1, .35, .8), opacity 1s;
-  -webkit-transition: -webkit-transform 1s cubic-bezier(.1, .1, .35, .8), opacity 1s;
+  transition: transform 1s, opacity 1s;
+  -webkit-transition: -webkit-transform 1s, opacity 1s;
   padding: 20px 0;
 }
 
@@ -83,13 +108,13 @@ body {
 
 .order_details .product_title {
   font-family: "NOTHS 2 Regular";
-  font-size: 29px;
+  font-size: 22px;
   color: #056582;
   margin-bottom: 10px;
 }
 
 .order_details .product_image {
-  max-height: 318px;
+  max-height: 70%;
   max-width: 100%;
   display: block;
   margin: 0 auto 15px;
@@ -108,51 +133,6 @@ body {
   display: none;
 }
 
-.today_modules {
-  overflow: hidden;
-  background-color: #f9f9f9;
-  font-size: 16px;
-  padding: 30px 0;
-  width: 1110px;
-  padding-bottom: 55px;
-  margin: auto;
-}
-
-.today {
-  width: 45%;
-}
-
-.today .today_title {
-  font-family: "NOTHS 2 Regular";
-  font-size: 40px;
-  text-align: center;
-  margin-bottom: 18px;
-}
-
-.today_details {
-  border: 2px solid rgb(195, 195, 195);
-  background: white;
-  height: 300px;
-  padding: 20px;
-  border-radius: 8px;
-}
-
 .ttv {
   color: #15B015;
-}
-
-#uk_today {
-  float: left;
-}
-
-#uk_today .EUR, #uk_today .AUD, #uk_today .USD {
-  display: none;
-}
-
-#de_today {
-  float: right;
-}
-
-#de_today .GBP, #de_today .AUD, #de_today .USD {
-  display: none;
 }
