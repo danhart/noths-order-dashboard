@@ -37,20 +37,19 @@ body {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 690px;
+  height: 533px;
   border-bottom: 2px solid #E7E6DD;
   background-color: #f4f4f4;
 }
 
 .order {
   position: absolute;
-  height: 650px;
-  width: 480px;
+  width: 350px;
   left: 0;
   top: 0;
   transition: transform 1s cubic-bezier(.1, .1, .35, .8), opacity 1s;
   -webkit-transition: -webkit-transform 1s cubic-bezier(.1, .1, .35, .8), opacity 1s;
-  padding: 40px 0;
+  padding: 20px 0;
 }
 
 .order.old {
@@ -60,9 +59,9 @@ body {
 .order_details {
   position: relative;
   width: 100%;
-  height: 610px;
   background: white;
   padding: 15px;
+  padding-bottom: 30px;
   border: 1px solid #ECECEC;
 }
 
@@ -84,13 +83,13 @@ body {
 
 .order_details .product_title {
   font-family: "NOTHS 2 Regular";
-  font-size: 32px;
+  font-size: 29px;
   color: #056582;
   margin-bottom: 10px;
 }
 
 .order_details .product_image {
-  max-height: 450px;
+  max-height: 318px;
   max-width: 100%;
   display: block;
   margin: 0 auto 15px;
@@ -113,7 +112,7 @@ body {
   overflow: hidden;
   background-color: #f9f9f9;
   font-size: 16px;
-  padding: 35px 0;
+  padding: 30px 0;
   width: 1110px;
   padding-bottom: 55px;
   margin: auto;
@@ -125,7 +124,7 @@ body {
 
 .today .today_title {
   font-family: "NOTHS 2 Regular";
-  font-size: 45px;
+  font-size: 40px;
   text-align: center;
   margin-bottom: 18px;
 }
