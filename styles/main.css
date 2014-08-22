@@ -49,6 +49,7 @@ body {
   left: 0;
   top: 0;
   transition: transform 1s cubic-bezier(.1, .1, .35, .8), opacity 1s;
+  -webkit-transition: -webkit-transform 1s cubic-bezier(.1, .1, .35, .8), opacity 1s;
   padding: 40px 0;
 }
 

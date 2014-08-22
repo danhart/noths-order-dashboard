@@ -57,10 +57,11 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
             var centerOffset = this.windowWidth / 2 - this.orderWidth / 2;
             $order.data('currentOffset', centerOffset);
 
+            // Give the browser some time to insert the new order
             setTimeout(function() {
                 $order.css('transform', 'translate3d(' + centerOffset + 'px,0,0)');
-            }, 20);
-        }, 1020),
+            }, 100);
+        }, 1100),
 
         updateOldOlders: function() {
             var view = this;
