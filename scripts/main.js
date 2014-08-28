@@ -9,6 +9,10 @@ define(["order-collection",
         resource: 'noths_order_geo/socket.io'
     });
 
+    // Get me some orders and some stats
+    socket.emit('orders', 5);
+    socket.emit('stats');
+
     var ukOrderCollection = new OrderCollection();
     var deOrderCollection = new OrderCollection();
     var ukStats = new Stats();
