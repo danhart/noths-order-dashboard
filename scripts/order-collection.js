@@ -8,14 +8,6 @@ define(["backbone", "order"], function(Backbone, Order) {
                 return ttv;
             }, { USD: 0, GBP: 0, AUD: 0, EUR: 0});
         },
-
-        push: function(ordersData) {
-            var collection = this;
-
-            ordersData.forEach(function(orderData) {
-                collection.add(orderData);
-            });
-        }
     });
 
     return OrderCollection;

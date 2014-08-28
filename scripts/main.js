@@ -1,13 +1,26 @@
 define(["order-collection",
+        "stats",
         "order-display-view",
+        "stats-view",
         "fake-data",
-        "socket.io", "jquery"], function(OrderCollection, OrderDisplayView, fakeData, io, $) {
+        "socket.io",
+        "jquery"], function(OrderCollection, Stats, OrderDisplayView, StatsView, fakeData, io, $) {
     var socket = io.connect('159.253.142.200:10052', {
         resource: 'noths_order_geo/socket.io'
     });
 
     var ukOrderCollection = new OrderCollection();
     var deOrderCollection = new OrderCollection();
+    var ukStats = new Stats();
+    var deStats = new Stats();
+
+    fakeUKData = function() {
+        ukOrderCollection.add(fakeData.uk);
+    };
+
+    fakeDEData = function() {
+        deOrderCollection.add(fakeData.de);
+    };
 
     socket.on('order', function(orderData) {
         if (orderData.origin === 'http://www.notonthehighstreet.com') {
@@ -17,13 +30,27 @@ define(["order-collection",
         }
     });
 
-    fakeUKData = function() {
-        ukOrderCollection.push(fakeData.uk);
-    };
+    socket.on('stats', function(stats) {
+        ukStats.set({
+            orderCount: stats.todaysUkOrderCount,
+            ttv:        stats.todaysUkTtv
+        });
 
-    fakeDEData = function() {
-        deOrderCollection.push(fakeData.de);
-    };
+        deStats.set({
+            orderCount: stats.todaysDeOrderCount,
+            ttv:        stats.todaysDeTtv
+        });
+    });
+
+    new StatsView({
+        el: $('.order_display_uk .stats')[0],
+        model: ukStats
+    });
+
+    new StatsView({
+        el: $('.order_display_de .stats')[0],
+        model: deStats
+    });
 
     new OrderDisplayView({
         el: $('.order_display_uk')[0],

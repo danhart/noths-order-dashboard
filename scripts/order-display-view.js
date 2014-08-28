@@ -34,18 +34,15 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
             this.cacheOrderWidth();
             this.windowWidth = window.innerWidth;
             this.$el = $(this.el);
-            this.renderTtv();
             this.listenTo( this.collection, 'add', this.render );
         },
 
         cacheOrderWidth: function() {
             var $order = $('<div/>', { 'class': 'order' }).hide().appendTo('body');
             this.orderWidth = parseInt($order.css('width'));
-            console.log(this.orderWidth);
         },
 
         render: _.rateLimit(function(order) {
-            this.renderTtv();
             this.updateOldOlders();
 
             var locals = $.extend(true, {}, order.attributes);
@@ -57,8 +54,8 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
             $order.css('transform', 'translate3d(' + this.windowWidth + 'px,0,0)');
             this.$el.append($order);
 
-            // var centerOffset = this.windowWidth / 2 - this.orderWidth / 2;
-            var newOffset = this.windowWidth - this.orderWidth - 40;
+            var paddingFromEdge = 40;
+            var newOffset = this.windowWidth - this.orderWidth - paddingFromEdge;
             $order.data('currentOffset', newOffset);
 
             // Give the browser some time to insert the new order
@@ -73,7 +70,7 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
             var $oldOrders = this.$el.find('.order');
             $oldOrders.addClass('old').removeClass('current');
 
-            if ($oldOrders.length > 5) {
+            if ($oldOrders.length > 10) {
                 $oldOrders.first().remove();
             }
 
@@ -83,14 +80,6 @@ define(['backbone', 'mustache', 'jquery', 'underscore'], function(Backbone, must
                 $oldOrder.data('currentOffset', newOffset);
                 $oldOrder.css('transform', 'translate3d(' + newOffset + 'px,0,0) scale(.7,.7)');
             });
-        },
-
-        renderTtv: function() {
-            var totalTtv = this.collection.totalTtv();
-            this.$el.find(".AUD").text("$" + totalTtv.AUD.toFixed(2));
-            this.$el.find(".GBP").text("£" + totalTtv.GBP.toFixed(2));
-            this.$el.find(".EUR").text("€" + totalTtv.EUR.toFixed(2));
-            this.$el.find(".USD").text("$" + totalTtv.USD.toFixed(2));
         }
     });
 

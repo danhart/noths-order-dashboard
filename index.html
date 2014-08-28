@@ -16,21 +16,37 @@
       alt="noths_logo" />
 
       <article class="order_display order_display_uk">
-        <span class="ttv">
-          <span class="GBP"></span>
-          <span class="AUD"></span>
-          <span class="EUR"></span>
-          <span class="USD"></span>
-        </span>
+        <article class="stats">
+          <span class="ttv">
+            <span class="label">TTV </span>
+            <span class="GBP"></span>
+            <span class="AUD"></span>
+            <span class="EUR"></span>
+            <span class="USD"></span>
+          </span>
+
+          <span class="order_count">
+            <span class="label">Orders </span>
+            <span class="value"></span>
+          </span>
+        </article>
       </article>
 
       <article class="order_display order_display_de">
-        <span class="ttv">
-          <span class="GBP"></span>
-          <span class="AUD"></span>
-          <span class="EUR"></span>
-          <span class="USD"></span>
-        </span>
+        <article class="stats">
+          <span class="ttv">
+            <span class="label">TTV </span>
+            <span class="GBP"></span>
+            <span class="AUD"></span>
+            <span class="EUR"></span>
+            <span class="USD"></span>
+          </span>
+
+          <span class="order_count">
+            <span class="label">Orders </span>
+            <span class="value"></span>
+          </span>
+        </article>
       </article>
     </section>
 
@@ -43,13 +59,6 @@
           <p class="total_price">{{total.currency_symbol}}{{total.amount}}</p>
         </div>
       </article>
-    </script>
-
-    <script type="text/template" id="product_template">
-      <img class="product_image" src="{{{product.imageURL.mini}}}" />
-      <p class="product_title">{{product.title}}</p>
-      <p class="partner_name">{{product.partnerName}}</p>
-      <p class="total_price">{{total.currency_symbol}}{{total.amount}}</p>
     </script>
 
     <script data-main="scripts/main" src="scripts/require.js"></script>
