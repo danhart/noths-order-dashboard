@@ -10,7 +10,16 @@ define(["order-collection",
     });
 
     // Get me some orders and some stats
-    socket.emit('orders', 5);
+    socket.emit('order-query', {
+        last: 1,
+        origin: 'http://www.notonthehighstreet.com'
+    });
+
+    socket.emit('order-query', {
+        last: 1,
+        origin: 'http://preview.notonthehighstreet.de'
+    });
+
     socket.emit('stats');
 
     var ukOrderCollection = new OrderCollection();

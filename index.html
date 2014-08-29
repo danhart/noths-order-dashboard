@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 
     <link href="styles/reset.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="styles/main.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="styles/main.css?bust=1" media="screen" rel="stylesheet" type="text/css">
   </head>
 
   <body>
@@ -62,5 +62,13 @@
     </script>
 
     <script data-main="scripts/main" src="scripts/require.js"></script>
+    <script>
+      requirejs.config({
+        shim: {
+          'rate-limit': ['underscore']
+        },
+        urlArgs: "bust=1"
+      });
+    </script>
   </body>
 </html>
