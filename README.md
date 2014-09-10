@@ -10,6 +10,7 @@ The socket.io server that powers this is here: https://github.com/danhart/noths-
 Built on:
  - Backbone.js
  - socket.io
+ - RequireJS
  - mustache
  - Underscore.js
  - jQuery
