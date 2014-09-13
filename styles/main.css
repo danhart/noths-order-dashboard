@@ -15,6 +15,10 @@
   url('../fonts/noths_sans_3_regular.ttf')  format('truetype');
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "NOTHS 3 Regular";
   font-style: normal;
@@ -30,12 +34,7 @@ body {
 }
 
 .main {
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100%;
 }
 
 .order_display {
@@ -45,6 +44,13 @@ body {
   height: 100%;
   float: left;
   background-size: 100% 100%;
+}
+
+@media (max-width: 767px) {
+  .order_display {
+    width: 100%;
+    float: none;
+  }
 }
 
 .order_display_uk {
@@ -74,9 +80,18 @@ body {
   top: 0;
   transition: transform 1s, opacity 1s;
   -webkit-transition: -webkit-transform 1s, opacity 1s;
-  padding: 40px 0;
+  padding: 85px 0;
   transform: translate3d(210%, 0, 0);
   -webkit-transform: translate3d(210%, 0, 0);
+  max-height: 75%;
+}
+
+@media (max-width: 767px) {
+  .order {
+    width: 80%;
+    transform: translate3d(130%, 0, 0);
+    -webkit-transform: translate3d(130%, 0, 0);
+  }
 }
 
 .order.current {
@@ -84,10 +99,25 @@ body {
   -webkit-transform: translate3d(50%, 0, 0);
 }
 
+@media (max-width: 767px) {
+  .order.current {
+    transform: translate3d(12.5%, 0, 0);
+    -webkit-transform: translate3d(12.5%, 0, 0);
+  }
+}
+
 .order.old {
   transform: translate3d(-110%, 0, 0);
   -webkit-transform: translate3d(-110%, 0, 0);
 }
+
+@media (max-width: 767px) {
+  .order.old {
+    transform: translate3d(-102%, 0, 0);
+    -webkit-transform: translate3d(-102%, 0, 0);
+  }
+}
+
 
 .order_details {
   position: relative;
@@ -135,10 +165,31 @@ body {
 }
 
 .logo {
-  width: 270px;
-  margin: 16px auto;
-  display: block;
-  display: none;
+  width: 150px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+
+header {
+  background: rgb(126, 125, 125);
+  z-index: 1;
+  position: relative;
+  height: 50px;
+  text-align: center;
+  box-shadow: inset 0px -4px 7px -6px black;
+  padding: 9px;
+}
+
+header h1 {
+  color: white;
+  font-size: 30px;
+}
+
+@media (max-width: 767px) {
+  header h1 {
+    text-align: right;
+  }
 }
 
 .ttv {
@@ -152,7 +203,14 @@ body {
   background: rgba(255,255,255,0.6);
   padding: 20px 40px;
   text-align: center;
-  font-size: 35px;
+  font-size: 30px;
+}
+
+@media (max-width: 767px) {
+  .stats {
+    font-size: 6vw;
+    padding: 5%;
+  }
 }
 
 .stats .order_count {
