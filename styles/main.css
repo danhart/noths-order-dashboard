@@ -83,7 +83,7 @@ body {
   padding: 85px 0;
   transform: translate3d(210%, 0, 0);
   -webkit-transform: translate3d(210%, 0, 0);
-  max-height: 75%;
+  max-height: 70%;
 }
 
 @media (max-width: 767px) {
