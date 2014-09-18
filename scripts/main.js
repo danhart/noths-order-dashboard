@@ -12,12 +12,14 @@ define(["order-collection",
     // Get me some orders and some stats
     socket.emit('order-query', {
         last: 1,
-        origin: 'http://www.notonthehighstreet.com'
+        origin: 'uk',
+        date: new Date()
     });
 
     socket.emit('order-query', {
         last: 1,
-        origin: 'http://preview.notonthehighstreet.de'
+        origin: 'de',
+        date: new Date()
     });
 
     socket.emit('stats');
