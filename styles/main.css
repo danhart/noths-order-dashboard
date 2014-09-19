@@ -126,6 +126,7 @@ body {
   padding: 15px;
   padding-bottom: 30px;
   border: 1px solid #ECECEC;
+  display: block;
 }
 
 .order_details:before {
