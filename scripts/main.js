@@ -47,13 +47,15 @@ define(["order-collection",
 
     socket.on('stats', function(stats) {
         ukStats.set({
-            orderCount: stats.todaysUkOrderCount,
-            ttv:        stats.todaysUkTtv
+            orderCount:     stats.todaysUkOrderCount,
+            ttv:            stats.todaysUkTtv,
+            currencySymbol: '£'
         });
 
         deStats.set({
-            orderCount: stats.todaysDeOrderCount,
-            ttv:        stats.todaysDeTtv
+            orderCount:     stats.todaysDeOrderCount,
+            ttv:            stats.todaysDeTtv,
+            currencySymbol: '€'
         });
     });
 

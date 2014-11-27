@@ -10,10 +10,12 @@ define(['backbone', 'jquery'], function(Backbone, $) {
 
         renderTtv: function() {
             var ttv = this.model.get('ttv');
-            this.$ttv.find(".AUD").text("$" + ttv.AUD.toFixed(2));
-            this.$ttv.find(".GBP").text("£" + ttv.GBP.toFixed(2));
-            this.$ttv.find(".EUR").text("€" + ttv.EUR.toFixed(2));
-            this.$ttv.find(".USD").text("$" + ttv.USD.toFixed(2));
+            var symbol = this.model.get('currencySymbol');
+
+            ttv = parseFloat(ttv);
+            ttv = ttv.toFixed(2);
+
+            this.$ttv.find(".value").text(symbol + ttv);
         },
 
         renderOrderCount: function() {
